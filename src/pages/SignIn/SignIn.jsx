@@ -1,8 +1,10 @@
+import Layout from "../../components/Layout/Layout"
+
 function SignIn(){
     return(
-        <div className="">
+        <Layout>
             Soy el SignIn
-        </div>
+        </Layout>
     )
 }
 
