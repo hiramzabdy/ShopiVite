@@ -1,4 +1,5 @@
 import { useRoutes, BrowserRouter } from 'react-router-dom'
+import { ShopingCartContextProvider } from '../../context/ShopingCartContext'
 import Home from '../Home/Home'
 import MyAccount from '../MyAccount/MyAccount'
 import MyOrder from '../MyOrder/MyOrder'
@@ -24,10 +25,12 @@ const AppRoutes = () => {
 function App() {
 
   return (
-    <BrowserRouter>
-      <Navbar/>
-      <AppRoutes/>
-    </BrowserRouter>
+    <ShopingCartContextProvider>
+      <BrowserRouter>
+        <Navbar/>
+        <AppRoutes/>
+      </BrowserRouter>
+    </ShopingCartContextProvider>
   )
 }
 
