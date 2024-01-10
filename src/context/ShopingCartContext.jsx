@@ -14,6 +14,15 @@ function ShopingCartContextProvider({children}){
     // Details to show
     const [showProductDetails, setShowProductDetails] = useState({})
 
+    // Cart Products
+    const [cartProducts, setCartProducts] = useState([])
+
+    // Checkout Side Menu - Open/Close
+    const [isCartOpen, setCartOpen] = useState(false)
+    const openCart = () => setCartOpen(true)
+    const closeCart = () => setCartOpen(false)
+
+
     return(
         <ShopingCartContext.Provider value={{
             count,
@@ -22,7 +31,12 @@ function ShopingCartContextProvider({children}){
             openProductDetail,
             closeProductDetail,
             showProductDetails,
-            setShowProductDetails
+            setShowProductDetails,
+            cartProducts,
+            setCartProducts,
+            isCartOpen,
+            openCart,
+            closeCart
         }}>
             {children}
         </ShopingCartContext.Provider>

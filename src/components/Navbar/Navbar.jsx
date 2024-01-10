@@ -24,7 +24,9 @@ function Navbar(){
                 <li><NavLink to={"/MyOrders"} className={({isActive }) => isActive ? activeStyle : undefined }>My Orders</NavLink></li>
                 <li><NavLink to={"/MyAccount"} className={({isActive }) => isActive ? activeStyle : undefined }>My Account</NavLink></li>
                 <li><NavLink to={"/SignIn"} className={({isActive }) => isActive ? activeStyle : undefined }>Sign In</NavLink></li>
-                <li className="flex items-center"><ShoppingBagIcon className="h-6 w-6 text-black"></ShoppingBagIcon><div>{context.count}</div></li>
+                <li className="flex items-center cursor-pointer"><ShoppingBagIcon className="h-6 w-6 text-black" onClick={()=>{
+                    context.isCartOpen? context.closeCart() : context.openCart()
+                }}></ShoppingBagIcon><div>{context.count}</div></li>
             </ul>
         </nav>
     )

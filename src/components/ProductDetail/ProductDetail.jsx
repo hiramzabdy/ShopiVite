@@ -14,11 +14,11 @@ function ProductDetail(){
             <figure className='m-4'>
                 <img src={context.showProductDetails.image} alt={context.showProductDetails.title} />
             </figure>
-            <p className='m-4 flex flex-col p-4'>
+            <div className='m-4 flex flex-col'>
                 <span className='font-medium text-2xl'>{context.showProductDetails.title}</span>
                 <span className='font-medium text-md'>Price ${context.showProductDetails.price}</span>
                 <span className='font-light text-sm'>Description: {context.showProductDetails.description}</span>
-            </p>
+            </div>
         </aside>
     )
 }
