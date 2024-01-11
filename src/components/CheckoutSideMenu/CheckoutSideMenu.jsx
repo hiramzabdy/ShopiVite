@@ -2,6 +2,7 @@ import { XMarkIcon } from '@heroicons/react/24/solid'
 import { useContext } from 'react'
 import { ShopingCartContext } from '../../context/ShopingCartContext'
 import OrderCard from '../OrderCard/OrderCard'
+import { calculateTotalPrice } from '../../utils/checkoutTotal'
 import "./styles.css"
 
 function ChechoutSideMenu(){
@@ -16,6 +17,10 @@ function ChechoutSideMenu(){
                 {context.cartProducts.map(product => {
                     return(<OrderCard key={product.id} id={product.id} title={product.title} image={product.image} price={product.price}></OrderCard>)
                 })}
+            </div>
+            <div className='m-4 flex justify-between items-center'>
+                <p className="text-lg font-light">Total:</p>
+                <p className="text-2xl font-medium">${calculateTotalPrice(context.cartProducts)}</p>
             </div>
         </aside>
     )

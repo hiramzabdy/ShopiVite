@@ -6,6 +6,13 @@ function OrderCard(props){
     const context = useContext(ShopingCartContext)
     const { id, title, image, price } = props
 
+    const removeFromCart = () => {
+        const productsInCart = [...context.cartProducts]
+        const productIndex = productsInCart.findIndex(product => product.id === id)
+        productsInCart.splice(productIndex, 1)
+        context.setCartProducts(productsInCart)
+    }
+
     return(
         <div className="flex justify-between items-center my-4">
             <div className="flex items-center gap-2">
@@ -16,12 +23,7 @@ function OrderCard(props){
             </div>
             <div className="flex items-center gap-2">
                 <p className="text-lg font-medium ml-4">${price}</p>
-                <XMarkIcon className="h-6 w-6 text-black cursor-pointer" onClick={() => {
-                    const productsInCart = [...context.cartProducts]
-                    const productIndex = productsInCart.findIndex(product => product.id === id)
-                    productsInCart.splice(productIndex, 1)
-                    context.setCartProducts(productsInCart)
-                }}></XMarkIcon>
+                <XMarkIcon className="h-6 w-6 text-black cursor-pointer" onClick={removeFromCart}></XMarkIcon>
             </div>
         </div>
     )
