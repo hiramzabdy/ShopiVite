@@ -16,6 +16,7 @@ const AppRoutes = () => {
     {path: "/MyAccount", element: <MyAccount/>},
     {path: "/MyOrder", element: <MyOrder/>},
     {path: "/MyOrders", element: <MyOrders/>},
+    {path: "/MyOrders/last", element: <MyOrder/>},
     {path: "/SignIn", element: <SignIn/>},
     {path: "/*", element: <NotFound/>}
   ])
@@ -30,7 +31,7 @@ function App() {
       <BrowserRouter>
         <Navbar/>
         <AppRoutes/>
-        <ChechoutSideMenu></ChechoutSideMenu>
+        <ChechoutSideMenu/>
       </BrowserRouter>
     </ShopingCartContextProvider>
   )

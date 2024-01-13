@@ -27,7 +27,6 @@ function Card(data){
             return(
                 <PlusIcon className="absolute top-0 right-0 flex justify-center items-center bg-stone-300 w-8 h-8 rounded-full m-1 p-1"
                 onClick={() => {
-                    context.setCount(context.count + 1)
                     addPorductToCart(data.data)
                     context.openCart()
                     }

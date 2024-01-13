@@ -26,7 +26,7 @@ function Navbar(){
                 <li><NavLink to={"/SignIn"} className={({isActive }) => isActive ? activeStyle : undefined }>Sign In</NavLink></li>
                 <li className="flex items-center cursor-pointer"><ShoppingBagIcon className="h-6 w-6 text-black" onClick={()=>{
                     context.isCartOpen? context.closeCart() : context.openCart()
-                }}></ShoppingBagIcon><div>{context.count}</div></li>
+                }}></ShoppingBagIcon><div>{context.cartProducts.length}</div></li>
             </ul>
         </nav>
     )
