@@ -9,6 +9,13 @@ import "./styles.css"
 function ChechoutSideMenu(){
     const context = useContext(ShopingCartContext)
 
+    const handleDelete = (id) => {
+        const productsInCart = [...context.cartProducts]
+        const productIndex = productsInCart.findIndex(product => product.id === id)
+        productsInCart.splice(productIndex, 1)
+        context.setCartProducts(productsInCart)
+    }
+
     const handleCheckout = () => {
         const orderToAdd = {
             date: "12-Jan-2023",
@@ -19,13 +26,6 @@ function ChechoutSideMenu(){
         context.setOrders([...context.orders, orderToAdd])
         context.setCartProducts([])
         context.closeCart()
-    }
-
-    const handleDelete = (id) => {
-        const productsInCart = [...context.cartProducts]
-        const productIndex = productsInCart.findIndex(product => product.id === id)
-        productsInCart.splice(productIndex, 1)
-        context.setCartProducts(productsInCart)
     }
 
     return(
