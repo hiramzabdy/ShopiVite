@@ -1,8 +1,27 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const ShopingCartContext = createContext()
 
 function ShopingCartContextProvider({children}){
+    // Products API
+    const [fakeStoreProducts, setFakeStoreProducts] = useState(null)
+    useEffect(() => {
+        fetch("https://fakestoreapi.com/products")
+            .then(response => response.json())
+            .then(data => setFakeStoreProducts(data))
+    }, [])
+
+    // Filtered Products
+    const [searchValue, setSearchValue] = useState("")
+    const filteredProducts = fakeStoreProducts?.filter((product) => {
+        const searchingTextValue = searchValue.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        const productTitle = product.title.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        if(productTitle.includes(searchingTextValue)){
+        return product
+        }
+    })
+
+
     // Product Detail Aside - Open/Close
     const [isProductDetailOpen, setProductDetailOpen] = useState(false)
     const openProductDetail = () => setProductDetailOpen(true)
@@ -25,6 +44,8 @@ function ShopingCartContextProvider({children}){
 
     return(
         <ShopingCartContext.Provider value={{
+            filteredProducts,
+            setSearchValue,
             isProductDetailOpen,
             openProductDetail,
             closeProductDetail,
