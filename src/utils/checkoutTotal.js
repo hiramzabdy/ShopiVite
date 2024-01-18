@@ -8,5 +8,6 @@ export function calculateTotalPrice(products){
     products.forEach(product => {
         totalPrice += product.price
     });
+    totalPrice = totalPrice.toFixed(2)
     return totalPrice
 }
