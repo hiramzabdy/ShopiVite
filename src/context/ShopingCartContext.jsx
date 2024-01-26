@@ -3,6 +3,14 @@ import { createContext, useEffect, useState } from "react";
 const ShopingCartContext = createContext()
 
 function ShopingCartContextProvider({children}){
+    // User Information
+    const [userData, setUserData] = useState({
+        "name": "",
+        "email": "",
+        "password": "",
+        "isLoggedIn": false
+    })
+
     // Products API
     const [fakeStoreProducts, setFakeStoreProducts] = useState(null)
     useEffect(() => {
@@ -20,7 +28,6 @@ function ShopingCartContextProvider({children}){
         return product
         }
     })
-
 
     // Product Detail Aside - Open/Close
     const [isProductDetailOpen, setProductDetailOpen] = useState(false)
@@ -44,6 +51,8 @@ function ShopingCartContextProvider({children}){
 
     return(
         <ShopingCartContext.Provider value={{
+            userData,
+            setUserData,
             filteredProducts,
             setSearchValue,
             isProductDetailOpen,
