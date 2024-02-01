@@ -18,13 +18,13 @@ function SignIn(){
 
 
         if(isNameValid && isEmailValid && isPasswordValid){
-            context.setUserData({
+            const data = {
                 "name": userName.value,
                 "email": userEmail.value,
                 "password": userPassword.value,
                 "isLoggedIn": true
-            })
-            console.log(context.userData)
+            }
+            context.setUserData(data)
         }else{
             alert("Invalid email or password")
         }

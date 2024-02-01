@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-
+import { useLocalStorage } from "../hooks/useLocalStorage";
 const ShopingCartContext = createContext()
 
 function ShopingCartContextProvider({children}){
@@ -10,6 +10,14 @@ function ShopingCartContextProvider({children}){
         "password": "",
         "isLoggedIn": false
     })
+
+    let {item: localStorageUserData,
+        saveItem: setLocalStorageUserData} = useLocalStorage("userData", userData)
+
+    useEffect(() => {
+        setLocalStorageUserData(userData)
+    }, [userData, setLocalStorageUserData])
+
 
     // Products API
     const [fakeStoreProducts, setFakeStoreProducts] = useState(null)
