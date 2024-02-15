@@ -14,10 +14,6 @@ function ShopingCartContextProvider({children}){
     let {item: localStorageUserData,
         saveItem: setLocalStorageUserData} = useLocalStorage("userData", userData)
 
-    useEffect(() => {
-        setLocalStorageUserData(userData)
-    }, [userData, setLocalStorageUserData])
-
 
     // Products API
     const [fakeStoreProducts, setFakeStoreProducts] = useState(null)
@@ -61,6 +57,8 @@ function ShopingCartContextProvider({children}){
         <ShopingCartContext.Provider value={{
             userData,
             setUserData,
+            localStorageUserData,
+            setLocalStorageUserData,
             filteredProducts,
             setSearchValue,
             isProductDetailOpen,
